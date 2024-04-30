@@ -1,0 +1,111 @@
+root@DESKTOP-4VF9DE5:~# cd myapp55
+root@DESKTOP-4VF9DE5:~/myapp55# vim Dockerfile93
+root@DESKTOP-4VF9DE5:~/myapp55# vim Dockerfile.db
+root@DESKTOP-4VF9DE5:~/myapp55# docker build -t myapp55
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+"docker build" requires exactly 1 argument.
+See 'docker build --help'.
+
+Usage:  docker build [OPTIONS] PATH | URL | -
+
+Build an image from a Dockerfile
+root@DESKTOP-4VF9DE5:~/myapp55# docker build -t myapp55-db -f Dockerfile.db .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon    148kB
+Step 1/4 : FROM postgres:13
+13: Pulling from library/postgres
+b0a0cf830b12: Retrying in 1 second
+b7cee5d580a5: Download complete
+d6e325433c18: Download complete
+0032408845da: Download complete
+4dfa7a274373: Download complete
+772cc280c62a: Download complete
+5f93f8b74ba6: Download complete
+62ab97235fdc: Download complete
+ff638120bdab: Downloading [=========>                                         ]  18.89MB/104.5MB
+d50c137da6c7: Downloading
+aa8ae414a16b: Waiting
+37de03a0cc7d: Waiting
+af10b2742b77: Waiting
+bd72054d7edc: Waiting
+error parsing HTTP 408 response body: invalid character '<' looking for beginning of value: "<html><body><h1>408 Request Time-out</h1>\nYour browser didn't send a complete request in time.\n</body></html>\n"
+root@DESKTOP-4VF9DE5:~/myapp55#   docker run -d --name myapp-db myapp-db
+Unable to find image 'myapp-db:latest' locally
+
+docker: Error response from daemon: pull access denied for myapp-db, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+root@DESKTOP-4VF9DE5:~/myapp55#
+root@DESKTOP-4VF9DE5:~/myapp55# docker run -d --name myapp55-db myapp55-db
+Unable to find image 'myapp55-db:latest' locally
+docker: Error response from daemon: Get "https://registry-1.docker.io/v2/": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers).
+See 'docker run --help'.
+root@DESKTOP-4VF9DE5:~/myapp55# ^C
+root@DESKTOP-4VF9DE5:~/myapp55# docker logs
+"docker logs" requires exactly 1 argument.
+See 'docker logs --help'.                                                                                                                                   
+Usage:  docker logs [OPTIONS] CONTAINER
+
+Fetch the logs of a container
+root@DESKTOP-4VF9DE5:~/myapp55# docker info
+Client:
+ Version:    24.0.5
+ Context:    default
+ Debug Mode: false
+
+Server:
+ Containers: 2
+  Running: 0
+  Paused: 0
+  Stopped: 2
+ Images: 1
+ Server Version: 24.0.5
+ Storage Driver: overlay2
+  Backing Filesystem: extfs
+  Supports d_type: true
+  Using metacopy: false
+  Native Overlay Diff: true
+  userxattr: false
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 1
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version:
+ runc version:
+ init version:
+ Security Options:
+  seccomp
+   Profile: builtin
+ Kernel Version: 5.15.146.1-microsoft-standard-WSL2
+ Operating System: Ubuntu 22.04.4 LTS
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 4
+ Total Memory: 3.763GiB
+ Name: DESKTOP-4VF9DE5
+ ID: b927b0bf-346e-40e1-9738-a5ab332a44c1
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Username: sandhya5584
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+
+WARNING: No blkio throttle.read_bps_device support
+WARNING: No blkio throttle.write_bps_device support
+WARNING: No blkio throttle.read_iops_device support
+WARNING: No blkio throttle.write_iops_device support
+root@DESKTOP-4VF9DE5:~/myapp55#
